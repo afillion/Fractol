@@ -10,7 +10,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 LDFLAGS = -L libft -lft -L/usr/local/lib -I/usr/local/include -lmlx -framework OpenGL -framework AppKit
 
-SRC = main.c
+SRC = main.c \
+	  mandelbrot.c \
+	  julia.c
 
 OBJ = $(SRC:.c=.o)
 
