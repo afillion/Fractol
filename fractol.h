@@ -14,6 +14,7 @@ typedef struct		s_env
 	int				size_line;
 	int				endian;
 	int				color;
+	int				draw;
 }					t_env;
 
 typedef	struct		s_mandelbrot
@@ -56,6 +57,7 @@ typedef struct		s_julia
 	double			tmp;
 }					t_jul;
 
+void				draw(t_env *e);
 void				draw_mandelbrot(t_env e);
 void				draw_julia(t_env e);
 void				ft_exit(char *s);

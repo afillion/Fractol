@@ -12,7 +12,8 @@ LDFLAGS = -L libft -lft -L/usr/local/lib -I/usr/local/include -lmlx -framework O
 
 SRC = main.c \
 	  mandelbrot.c \
-	  julia.c
+	  julia.c \
+	  draw.c
 
 OBJ = $(SRC:.c=.o)
 
