@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "fractol.h"
 
 int		expose_hook(t_env *e)
@@ -6,8 +7,16 @@ int		expose_hook(t_env *e)
 	return (0);
 }
 
+int		mouse_hook(int button, int x, int y, t_env *e)
+{
+	printf("mouse = %d , %d : %d\n", x, y, button);
+	draw(e);
+	return (0);
+}
+
 int		key_hook(int keycode, t_env *e)
 {
+	printf("key = %d\n", keycode);
 	if (keycode == 53)
 		exit(0);
 	draw(e);
@@ -44,6 +53,7 @@ int		main(int ac, char **av)
 	e.win = mlx_new_window(e.mlx, 700, 700, e.filename);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_key_hook(e.win, key_hook, &e);
+	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_loop(e.mlx);
 	return(0);
 }
