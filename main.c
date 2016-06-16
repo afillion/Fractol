@@ -31,6 +31,10 @@ int		main(int ac, char **av)
 			e.draw = 1;
 		else if (ft_strcmp(av[1], "Julia") == 0)
 			e.draw = 2;
+		else if (ft_strcmp(av[1], "Ship") == 0)
+			e.draw = 3;
+		else if (ft_strcmp(av[1], "Rabbit") == 0)
+			e.draw = 4;
 		else
 			ft_exit("Wrong fractal's name ! Try Mandelbrot or Julia");
 	}

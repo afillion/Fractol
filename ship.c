@@ -1,6 +1,7 @@
 #include "fractol.h"
+#include <math.h>
 
-void	draw_mandelbrot(t_env e)
+void	draw_ship(t_env e)
 {
 	t_frac	f;
 
@@ -11,7 +12,7 @@ void	draw_mandelbrot(t_env e)
 	f.x2 = 0.6;
 	f.y1 = -1.2;
 	f.y2 = 1.2;
-	f.zoom = 200;
+	f.zoom = 250;
 	f.max = 250;
 	f.image_x = (f.x2 - f.x1) * f.zoom;
 	f.image_y = (f.y2 - f.y1) * f.zoom;
@@ -31,7 +32,7 @@ void	draw_mandelbrot(t_env e)
 			{
 				f.tmp = f.z_r;
 				f.z_r = f.z_r * f.z_r - f.z_i * f.z_i + f.c_r;
-				f.z_i = 2 * f.z_i * f.tmp + f.c_i;
+				f.z_i = 2 * fabs(f.z_i) * fabs(f.tmp) + f.c_i;
 				f.i++;
 			}
 			if (f.i == f.max)

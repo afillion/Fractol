@@ -16,4 +16,8 @@ void	draw(t_env *e)
 		draw_mandelbrot(*e);
 	if (e->draw == 2)
 		draw_julia(*e);
+	if (e->draw == 3)
+		draw_ship(*e);
+	if (e->draw == 4)
+		draw_rabbit(*e);
 }
