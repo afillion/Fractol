@@ -22,3 +22,10 @@ int		key_hook(int keycode, t_env *e)
 	draw(e);
 	return (0);
 }
+
+int		mouse_motion_hook(int x, int y, t_env *e)
+{
+	printf("mouse_motion = x : %d\t y : %d\n", x, y);
+	draw(e);
+	return (0);
+}

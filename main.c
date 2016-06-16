@@ -31,6 +31,7 @@ int		main(int ac, char **av)
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);
+	mlx_hook(e.win, 6, 1L<<6,  mouse_motion_hook, &e);
 	mlx_loop(e.mlx);
 	return(0);
 }
