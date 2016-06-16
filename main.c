@@ -22,12 +22,14 @@ int		main(int ac, char **av)
 		else if (ft_strcmp(av[1], "Rabbit") == 0)
 			e.draw = 4;
 		else
-			ft_exit("Wrong fractal's name ! Try Mandelbrot or Julia");
+			ft_exit("Wrong fractal's name ! Try Mandelbrot, Julia, Ship or Rabbit");
 	}
 	else
-		ft_exit("Usage: './fractol <name>' You can choose between Mandelbrot or Julia");
+		ft_exit("Usage: './fractol <name>' You can choose between Mandelbrot, Julia, Ship or Rabbit");
+	e.width = 800;
+	e.height = 800;
 	e.mlx = mlx_init();
-	e.win = mlx_new_window(e.mlx, 700, 700, e.filename);
+	e.win = mlx_new_window(e.mlx, e.width, e.height, e.filename);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);

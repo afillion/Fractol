@@ -15,6 +15,10 @@ typedef struct		s_env
 	int				endian;
 	int				color;
 	int				draw;
+	double			width;
+	double			height;
+	int				ptr_x;
+	int				ptr_y;
 }					t_env;
 
 typedef	struct		s_fractals
@@ -48,6 +52,8 @@ void				draw_julia(t_env e);
 void				draw_ship(t_env e);
 void				draw_rabbit(t_env e);
 void				put_pixel_to_img(t_env *e, int x, int y);
+
+double				get_complex(int x);
 
 void				ft_exit(char *s);
 #endif
