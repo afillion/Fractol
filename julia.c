@@ -10,9 +10,9 @@ void	draw_julia(t_env e)
 	f.y1 = -1.2;
 	f.y2 = 1.2;
 	f.zoom = 250;
-	f.max = 150;
-	f.image_x = (f.x2 - f.x1) * f.zoom;
-	f.image_y = (f.y2 - f.y1) * f.zoom;
+	f.max = 50;
+	f.image_x = 800;
+	f.image_y = 800;
 	e.img = mlx_new_image(e.mlx, (int)f.image_x, (int)f.image_y);
 	e.data = mlx_get_data_addr(e.img, &e.bpp, &e.size_line, &e.endian);
 	while (f.x < f.image_x)
@@ -46,7 +46,7 @@ void	draw_julia(t_env e)
 		}
 		f.x++;
 	}
-	mlx_put_image_to_window(e.mlx, e.win, e.img, 200, 200);
+	mlx_put_image_to_window(e.mlx, e.win, e.img, 0, 0);
 }
 
 double	get_complex(int x)
