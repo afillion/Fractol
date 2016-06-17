@@ -17,6 +17,10 @@ int		mouse_hook(int button, int x, int y, t_env *e)
 int		key_hook(int keycode, t_env *e)
 {
 	printf("key = %d\n", keycode);
+	if (keycode == 82)
+		e->julia = 0;
+	if (keycode == 83)
+		e->julia = 1;
 	if (keycode == 53)
 		exit(0);
 	draw(e);

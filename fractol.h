@@ -19,6 +19,7 @@ typedef struct		s_env
 	double			height;
 	int				ptr_x;
 	int				ptr_y;
+	int				julia;
 }					t_env;
 
 typedef	struct		s_fractals
