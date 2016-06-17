@@ -1,20 +1,46 @@
 #include "fractol.h"
 
+void	init_julia(t_env *e, t_frac *f)
+{
+	f->x = 0;
+	f->x1 = -1;
+	f->x2 = 1;
+	f->y1 = -1.2;
+	f->y2 = 1.2;
+	f->zoom = 250;
+	f->max = 50;
+	f->image_x = 800;
+	f->image_y = 800;
+	e->img = mlx_new_image(e->mlx, (int)f->image_x, (int)f->image_y);
+	e->data = mlx_get_data_addr(e->img, &e->bpp, &e->size_line, &e->endian);
+}
+
+void	color_julia(t_env *e, t_frac *f)
+{
+	while (f->z_r * f->z_r + f->z_i * f->z_i < 4 && f->i < f->max)
+	{
+		f->tmp = f->z_r;
+		f->z_r = f->z_r * f->z_r - f->z_i * f->z_i + f->c_r;
+		f->z_i = 2 * f->z_i * f->tmp + f->c_i;
+		f->i++;
+	}
+	if (f->i == f->max)
+	{
+		e->color = 0x000000;
+		put_pixel_to_img(e, f->x, f->y);
+	}
+	else
+	{
+		e->color = (f->i * 255) / f->max;
+		put_pixel_to_img(e, f->x, f->y);
+	}
+}
+
 void	draw_julia(t_env e)
 {
 	t_frac	f;
 
-	f.x = 0;
-	f.x1 = -1;
-	f.x2 = 1;
-	f.y1 = -1.2;
-	f.y2 = 1.2;
-	f.zoom = 250;
-	f.max = 50;
-	f.image_x = 800;
-	f.image_y = 800;
-	e.img = mlx_new_image(e.mlx, (int)f.image_x, (int)f.image_y);
-	e.data = mlx_get_data_addr(e.img, &e.bpp, &e.size_line, &e.endian);
+	init_julia(&e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;
@@ -25,23 +51,7 @@ void	draw_julia(t_env e)
 			f.z_r = f.x / f.zoom + f.x1;
 			f.z_i = f.y / f.zoom + f.y1;
 			f.i = 0;
-			while (f.z_r * f.z_r + f.z_i * f.z_i < 4 && f.i < f.max)
-			{
-				f.tmp = f.z_r;
-				f.z_r = f.z_r * f.z_r - f.z_i * f.z_i + f.c_r;
-				f.z_i = 2 * f.z_i * f.tmp + f.c_i;
-				f.i++;
-			}
-			if (f.i == f.max)
-			{
-				e.color = 0x000000;
-				put_pixel_to_img(&e, f.x, f.y);
-			}
-			else
-			{
-				e.color = (f.i * 255) / f.max;
-				put_pixel_to_img(&e, f.x, f.y);
-			}
+			color_julia(&e, &f);
 			f.y++;
 		}
 		f.x++;
