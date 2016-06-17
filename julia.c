@@ -6,7 +6,7 @@ void	init_julia(t_env *e, t_frac *f)
 	f->x1 = -400;
 	f->y1 = -400;
 	f->zoom = 300;
-	f->max = 50;
+	f->max = 100;
 	f->image_x = 800;
 	f->image_y = 800;
 	e->img = mlx_new_image(e->mlx, (int)f->image_x, (int)f->image_y);
@@ -34,7 +34,7 @@ void	color_julia(t_env *e, t_frac *f)
 	}
 	else
 	{
-		e->color = f->i * (98410);
+		e->color = f->i * (16776685);
 		put_pixel_to_img(e, f->x, f->y);
 	}
 }
@@ -54,8 +54,8 @@ void	draw_julia(t_env e)
 				f.c_r = get_complex(e.ptr_x);
 				f.c_i = get_complex(e.ptr_y);
 			}
-			f.z_r = (f.x + f.x1) / f.zoom ;
-			f.z_i = (f.y + f.y1) / f.zoom ;
+			f.z_r = (f.x + f.x1) / f.zoom;
+			f.z_i = (f.y + f.y1) / f.zoom;
 			f.i = 0;
 			color_julia(&e, &f);
 			f.y++;
