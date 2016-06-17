@@ -29,26 +29,6 @@ void	choose_julia(t_env *e, t_frac *f)
 	}
 }
 
-void	init_julia(t_env *e, t_frac *f)
-{
-	f->x = 0;
-	f->x1 = -400;
-	f->y1 = -400;
-	f->zoom = 300;
-	f->max = 100;
-	f->image_x = 800;
-	f->image_y = 800;
-	f->c_r = 0.285;
-	f->c_i = 0.01;
-	if (e->julia == 0)
-	{
-		f->c_r = 0.285;
-		f->c_i = 0.01;
-	}
-	if (e->julia != 1 && e->julia != 2 && e->julia != 0)
-		choose_julia(e, f);
-}
-
 void	color_julia(t_env *e, t_frac *f)
 {
 	while (f->z_r * f->z_r + f->z_i * f->z_i < 4 && f->i < f->max)

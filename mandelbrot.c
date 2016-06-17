@@ -4,19 +4,7 @@ void	draw_mandelbrot(t_env *e)
 {
 	t_frac	f;
 
-	f.i = 0;
-	f.x = 0;
-	f.y = 0;
-	f.x1 = -2.1;
-	f.x2 = 0.6;
-	f.y1 = -1.2;
-	f.y2 = 1.2;
-	f.zoom = 200;
-	f.max = 250;
-	f.image_x = (f.x2 - f.x1) * f.zoom;
-	f.image_y = (f.y2 - f.y1) * f.zoom;
-	e->img = mlx_new_image(e->mlx, (int)f.image_x, (int)f.image_y);
-	e->data = mlx_get_data_addr(e->img, &e->bpp, &e->size_line, &e->endian);
+	init_mandelbrot(e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;

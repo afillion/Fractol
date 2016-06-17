@@ -50,16 +50,21 @@ int					key_hook(int keycode, t_env *e);
 int					mouse_motion_hook(int x, int y, t_env *e);
 
 void				draw(t_env *e);
-void				draw_mandelbrot(t_env *e);
+double				get_complex(int x);
+void				put_pixel_to_img(t_env *e, int x, int y);
+
+void				init_mandelbrot(t_env *e, t_frac *f);
 void				init_julia(t_env *e, t_frac *f);
+
+void				draw_mandelbrot(t_env *e);
+
 void				choose_julia(t_env *e, t_frac *f);
 void				color_julia(t_env *e, t_frac *f);
 void				draw_julia(t_env *e);
-void				draw_ship(t_env *e);
-void				draw_rabbit(t_env *e);
-void				put_pixel_to_img(t_env *e, int x, int y);
 
-double				get_complex(int x);
+void				draw_ship(t_env *e);
+
+void				draw_rabbit(t_env *e);
 
 void				ft_exit(char *s);
 #endif
