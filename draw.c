@@ -13,11 +13,11 @@ void	put_pixel_to_img(t_env *e, int x, int y)
 void	draw(t_env *e)
 {
 	if (e->draw == 1)
-		draw_mandelbrot(*e);
+		draw_mandelbrot(e);
 	if (e->draw == 2)
-		draw_julia(*e);
+		draw_julia(e);
 	if (e->draw == 3)
-		draw_ship(*e);
+		draw_ship(e);
 	if (e->draw == 4)
-		draw_rabbit(*e);
+		draw_rabbit(e);
 }

@@ -21,6 +21,8 @@ int		key_hook(int keycode, t_env *e)
 		e->julia = 0;
 	if (keycode == 83)
 		e->julia = 1;
+	if (keycode == 84)
+		e->julia = 2;
 	if (keycode == 53)
 		exit(0);
 	draw(e);

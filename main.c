@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include </usr/X11/include/X11/X.h>
 #include "fractol.h"
 
 void	ft_exit(char *s)
@@ -29,6 +31,7 @@ int		main(int ac, char **av)
 	e.width = 800;
 	e.height = 800;
 	e.mlx = mlx_init();
+	//e.img = mlx_new_image(e.mlx, 800, 800);
 	e.win = mlx_new_window(e.mlx, e.width, e.height, e.filename);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_key_hook(e.win, key_hook, &e);

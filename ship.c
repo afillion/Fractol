@@ -1,7 +1,7 @@
 #include "fractol.h"
 #include <math.h>
 
-void	draw_ship(t_env e)
+void	draw_ship(t_env *e)
 {
 	t_frac	f;
 
@@ -16,8 +16,8 @@ void	draw_ship(t_env e)
 	f.max = 250;
 	f.image_x = (f.x2 - f.x1) * f.zoom;
 	f.image_y = (f.y2 - f.y1) * f.zoom;
-	e.img = mlx_new_image(e.mlx, (int)f.image_x, (int)f.image_y);
-	e.data = mlx_get_data_addr(e.img, &e.bpp, &e.size_line, &e.endian);
+	e->img = mlx_new_image(e->mlx, (int)f.image_x, (int)f.image_y);
+	e->data = mlx_get_data_addr(e->img, &e->bpp, &e->size_line, &e->endian);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;
@@ -37,17 +37,17 @@ void	draw_ship(t_env e)
 			}
 			if (f.i == f.max)
 			{
-				e.color = 0x000000;
-				put_pixel_to_img(&e, f.x, f.y);
+				e->color = 0x000000;
+				put_pixel_to_img(e, f.x, f.y);
 			}
 			else
 			{
-				e.color = (f.i * 16777216) / f.max;
-				put_pixel_to_img(&e, f.x, f.y);
+				e->color = (f.i * 16777216) / f.max;
+				put_pixel_to_img(e, f.x, f.y);
 			}
 			f.y++;
 		}
 		f.x++;
 	}
-	mlx_put_image_to_window(e.mlx, e.win, e.img, 0, 0);
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 }
