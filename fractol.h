@@ -52,6 +52,7 @@ int					mouse_motion_hook(int x, int y, t_env *e);
 void				draw(t_env *e);
 void				draw_mandelbrot(t_env *e);
 void				init_julia(t_env *e, t_frac *f);
+void				choose_julia(t_env *e, t_frac *f);
 void				color_julia(t_env *e, t_frac *f);
 void				draw_julia(t_env *e);
 void				draw_ship(t_env *e);

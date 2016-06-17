@@ -1,5 +1,34 @@
 #include "fractol.h"
 
+void	choose_julia(t_env *e, t_frac *f)
+{
+	if (e->julia == 3)
+	{
+		f->c_r = -0.765;
+		f->c_i = 0.1025;
+	}
+	if (e->julia == 4)
+	{
+		f->c_r = 0.3;
+		f->c_i = 0.0225;
+	}
+	if (e->julia == 5)
+	{
+		f->c_r = -0.5525;
+		f->c_i = -0.4775;
+	}
+	if (e->julia == 6)
+	{
+		f->c_r = 0.1675;
+		f->c_i = 0.5825;
+	}
+	if (e->julia == 7)
+	{
+		f->c_r = -0.4225;
+		f->c_i = -0.6675;
+	}
+}
+
 void	init_julia(t_env *e, t_frac *f)
 {
 	f->x = 0;
@@ -11,13 +40,13 @@ void	init_julia(t_env *e, t_frac *f)
 	f->image_y = 800;
 	f->c_r = 0.285;
 	f->c_i = 0.01;
-	e->img = mlx_new_image(e->mlx, (int)f->image_x, (int)f->image_y);
-	e->data = mlx_get_data_addr(e->img, &e->bpp, &e->size_line, &e->endian);
 	if (e->julia == 0)
 	{
 		f->c_r = 0.285;
 		f->c_i = 0.01;
 	}
+	if (e->julia != 1 && e->julia != 2 && e->julia != 0)
+		choose_julia(e, f);
 }
 
 void	color_julia(t_env *e, t_frac *f)
