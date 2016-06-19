@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include </usr/X11/include/X11/X.h>
 #include "fractol.h"
 
 void	ft_exit(char *s)
