@@ -10,8 +10,8 @@ void	draw_mandelbrot(t_env *e)
 		f.y = 0;
 		while (f.y < f.image_y)
 		{
-			f.c_r = f.x / f.zoom + f.x1;
-			f.c_i = f.y / f.zoom + f.y1;
+			f.c_r = (f.x + f.x1) / f.zoom ;
+			f.c_i = (f.y + f.y1) / f.zoom ;
 			f.z_r = 0;
 			f.z_i = 0;
 			f.i = 0;

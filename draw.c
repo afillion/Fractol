@@ -21,3 +21,16 @@ void	draw(t_env *e)
 	if (e->draw == 4)
 		draw_rabbit(e);
 }
+
+double	get_complex(int x)
+{
+	double c;
+
+	if (x <= 800 || x > 0)
+		c = (x - 400) * 0.0025;
+	else if (x < 0)
+		c = -1;
+	else
+		c = 1;
+	return (c);
+}

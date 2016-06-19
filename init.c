@@ -23,9 +23,9 @@ void	init_julia(t_env *e, t_frac *f)
 void	init_mandelbrot(t_env *e, t_frac *f)
 {
 	f->x = 0;
-	f->x1 = -2.1;
-	f->y1 = -1.2;
-	f->zoom = 300;
+	f->x1 = -400;
+	f->y1 = -400;
+	f->zoom = 200;
 	f->max = 100;
 	f->image_x = 800;
 	f->image_y = 800;

@@ -4,26 +4,24 @@ void	draw_rabbit(t_env *e)
 {
 	t_frac	f;
 
-	f.x = 0;
-	f.x1 = -1.8;
-	f.x2 = 1;
-	f.y1 = -1.65;
-	f.y2 = 1.2;
-	f.zoom = 150;
-	f.max = 50;
-	f.image_x = (f.x2 - f.x1) * f.zoom;
-	f.image_y = (f.y2 - f.y1) * f.zoom;
-	e->img = mlx_new_image(e->mlx, (int)f.image_x, (int)f.image_y);
-	e->data = mlx_get_data_addr(e->img, &e->bpp, &e->size_line, &e->endian);
+	init_mandelbrot(e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;
 		while (f.y < f.image_y)
 		{
-			f.c_r = -0.123;
-			f.c_i = 0.745;
-			f.z_r = f.x / f.zoom + f.x1;
-			f.z_i = f.y / f.zoom + f.y1;
+			if (e->julia == 0)
+			{
+				f.c_r = -0.123;
+				f.c_i = 0.745;
+			}
+			if (e->julia == 1)
+			{
+				f.c_r = get_complex(e->ptr_x);
+				f.c_i = get_complex(e->ptr_y);
+			}
+			f.z_r = (f.x + f.x1) / f.zoom;
+			f.z_i = (f.y + f.y1) / f.zoom;
 			f.i = 0;
 			while (f.z_r * f.z_r + f.z_i * f.z_i < 4 && f.i < f.max)
 			{

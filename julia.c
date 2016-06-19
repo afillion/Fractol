@@ -82,16 +82,3 @@ void	draw_julia(t_env *e)
 	}
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 }
-
-double	get_complex(int x)
-{
-	double c;
-
-	if (x <= 800 || x > 0)
-		c = (x - 400) * 0.0025;
-	else if (x < 0)
-		c = -1;
-	else
-		c = 1;
-	return (c);
-}
