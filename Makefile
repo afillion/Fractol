@@ -17,7 +17,7 @@ SRC = main.c \
 	  ship.c \
 	  rabbit.c \
 	  hook.c \
-	  init.c
+	  init.c \
 
 OBJ = $(SRC:.c=.o)
 
