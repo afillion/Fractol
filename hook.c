@@ -9,10 +9,11 @@ int		expose_hook(t_env *e)
 
 int		mouse_hook(int button, int x, int y, t_env *e)
 {
-	if (button == 5)
+	printf("button = %d (%d;%d)\n", button, x, y);
+	if (button == 1) //1 left clic, 5 wheel up
 	{
-		e->zm_x = x;
-		e->zm_y = y;
+		e->mx = x;
+		e->my = y;
 		e->zoom = 1;
 		draw(e);
 	}

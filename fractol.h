@@ -26,8 +26,8 @@ typedef struct		s_env
 	int				zm;
 	int				updown;
 	int				leftright;
-	int				zm_x;
-	int				zm_y;
+	int				mx;
+	int				my;
 	double			tmp_x1;
 	double			tmp_y1;
 }					t_env;
@@ -51,6 +51,8 @@ typedef	struct		s_fractals
 	double			i;
 	double			tmp;
 }					t_frac;
+
+void				zoom(t_env *e, t_frac *f);
 
 int					expose_hook(t_env *e);
 int					mouse_hook(int button, int x, int y, t_env *e);
