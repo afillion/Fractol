@@ -12,7 +12,7 @@ void	draw_ship(t_env *e)
 		while (f.y < f.image_y)
 		{
 			f.c_r = (f.x + f.x1) / f.zoom;
-			f.c_i = (f.y + f.y1) / f.zoom ;
+			f.c_i = (f.y + f.y1) / f.zoom;
 			f.z_r = 0;
 			f.z_i = 0;
 			f.i = 0;

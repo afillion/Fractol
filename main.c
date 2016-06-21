@@ -29,14 +29,16 @@ int		main(int ac, char **av)
 		ft_exit("Usage: './fractol <name>' You can choose between Mandelbrot, Julia, Ship or Rabbit");
 	e.width = 800;
 	e.height = 800;
+	e.leftright = 0;
+	e.updown = 0;
 	e.mlx = mlx_init();
 	e.img = mlx_new_image(e.mlx, 800, 800);
 	e.data = mlx_get_data_addr(e.img, &e.bpp, &e.size_line, &e.endian);
 	e.win = mlx_new_window(e.mlx, e.width, e.height, e.filename);
-	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_key_hook(e.win, key_hook, &e);
-	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_hook(e.win, 6, 1L<<6, mouse_motion_hook, &e);
+	mlx_mouse_hook(e.win, mouse_hook, &e);
+	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop(e.mlx);
 	return(0);
 }

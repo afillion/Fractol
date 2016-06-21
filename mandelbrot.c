@@ -29,7 +29,7 @@ void	draw_mandelbrot(t_env *e)
 			}
 			else
 			{
-				e->color = (f.i * 16777216) / f.max;
+				e->color = (f.i * 16776685);
 				put_pixel_to_img(e, f.x, f.y);
 			}
 			f.y++;

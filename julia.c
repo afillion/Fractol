@@ -1,4 +1,6 @@
 #include "fractol.h"
+#include <math.h>
+#include <stdio.h>
 
 void	choose_julia(t_env *e, t_frac *f)
 {
@@ -67,7 +69,7 @@ void	draw_julia(t_env *e)
 				f.c_i = get_complex(e->ptr_y);
 				e->tmp_ci = f.c_i;
 			}
-			if (e->julia == 2)
+			else if (e->julia == 2)
 			{
 				f.c_r = e->tmp_cr;
 				f.c_i = e->tmp_ci;

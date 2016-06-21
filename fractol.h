@@ -22,6 +22,14 @@ typedef struct		s_env
 	int				julia;
 	double			tmp_cr;
 	double			tmp_ci;
+	int				zoom;
+	int				zm;
+	int				updown;
+	int				leftright;
+	int				zm_x;
+	int				zm_y;
+	double			tmp_x1;
+	double			tmp_y1;
 }					t_env;
 
 typedef	struct		s_fractals
