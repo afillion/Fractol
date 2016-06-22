@@ -31,6 +31,15 @@ int		main(int ac, char **av)
 	e.height = 800;
 	e.leftright = 0;
 	e.updown = 0;
+	e.tmp_x = 0;
+	e.tmp_y = 0;
+	e.zoom = 0;
+	e.zm = 0;
+	e.julia = 0;
+	e.y1 = 0;
+	e.x1 = 0;
+	e.mx = 0;
+	e.my = 0;
 	e.mlx = mlx_init();
 	e.img = mlx_new_image(e.mlx, 800, 800);
 	e.data = mlx_get_data_addr(e.img, &e.bpp, &e.size_line, &e.endian);

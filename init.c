@@ -8,6 +8,9 @@ void	init_julia(t_env *e, t_frac *f)
 		e->leftright = 0;
 		e->zm = 0;
 		e->julia = 0;
+		e->zoom = 0;
+		e->x1 = 0;
+		e->y1 = 0;
 	}
 	f->x = 0;
 	f->x1 = -400 + e->leftright;

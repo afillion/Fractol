@@ -57,8 +57,6 @@ void	draw_julia(t_env *e)
 	t_frac	f;
 
 	init_julia(e, &f);
-	if (e->zoom == 1)
-		zoom(e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;
@@ -89,36 +87,24 @@ void	draw_julia(t_env *e)
 
 void	zoom(t_env *e, t_frac *f)
 {
-	if (e->mx < 400)
+	if (e->mx < 400 + e->x1 && e->mx != 0)
 	{
-		while (e->mx < 400)
-		{
-			f->x1--;
-			e->mx++;
-		}
+			f->x1 -= ((400 + e->x1) - e->mx);
+			e->x1 = ((400 + e->x1) - e->mx);
 	}
-	else if (e->mx > 400)
+	else if (e->mx > 400 + e->x1 && e->mx != 0)
 	{
-		while (e->mx > 400)
-		{
-			f->x1++;
-			e->mx--;
-		}
+			f->x1 -= ((400 + e->x1) - e->mx);
+			e->x1 = ((400 + e->x1) - e->mx);
 	}
-	if (e->my < 400)
+	if (e->my < 400 + e->y1 && e->my != 0)
 	{
-		while (e->my < 400)
-		{
-			f->y1--;
-			e->my++;
-		}
+			f->y1 -= ((400 + e->y1) - e->my);
+			e->y1 = ((400 + e-> y1) - e->my);
 	}
-	else if (e->my > 400)
+	else if (e->my > 400 + e->y1 && e->my != 0)
 	{
-		while (e->my > 400)
-		{
-			f->y1++;
-			e->my--;
-		}
+			f->y1 -= ((400 + e->y1) - e->my);
+			e->y1 = ((400 + e->y1) - e->my);
 	}
 }

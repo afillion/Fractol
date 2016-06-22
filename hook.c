@@ -13,7 +13,9 @@ int		mouse_hook(int button, int x, int y, t_env *e)
 	if (button == 1) //1 left clic, 5 wheel up
 	{
 		e->mx = x;
+		e->mx2 = x;
 		e->my = y;
+		e->my2 = y;
 		e->zoom = 1;
 		draw(e);
 	}

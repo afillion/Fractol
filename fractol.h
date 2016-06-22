@@ -30,6 +30,12 @@ typedef struct		s_env
 	int				my;
 	double			tmp_x1;
 	double			tmp_y1;
+	int				mx2;
+	int				my2;
+	int				tmp_x;
+	int				tmp_y;
+	int				x1;
+	int				y1;
 }					t_env;
 
 typedef	struct		s_fractals
