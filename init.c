@@ -6,17 +6,17 @@ void	init_julia(t_env *e, t_frac *f)
 	{
 		e->updown = 0;
 		e->leftright = 0;
-		e->zm = 0;
+		e->zm = 1;
 		e->julia = 0;
 		e->zoom = 0;
 		e->x1 = 0;
 		e->y1 = 0;
 	}
 	f->x = 0;
-	f->x1 = -400 + e->leftright;
-	f->y1 = -400 + e->updown;
-	f->zoom = 300 + e->zm;
-	f->max = 100;
+	f->x1 = -400.0 + e->leftright;
+	f->y1 = -400.0 + e->updown;
+	f->zoom = 300.0 * e->zm;
+	f->max = 50.0 + e->iter;
 	f->image_x = 800;
 	f->image_y = 800;
 	f->c_r = 0.285;

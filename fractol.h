@@ -23,7 +23,7 @@ typedef struct		s_env
 	double			tmp_cr;
 	double			tmp_ci;
 	int				zoom;
-	int				zm;
+	double			zm;
 	int				updown;
 	int				leftright;
 	int				mx;
@@ -36,6 +36,8 @@ typedef struct		s_env
 	int				tmp_y;
 	int				x1;
 	int				y1;
+	double			iter;
+	int				button;
 }					t_env;
 
 typedef	struct		s_fractals
@@ -43,9 +45,7 @@ typedef	struct		s_fractals
 	int				x;
 	int				y;
 	double			x1;
-	double			x2;
 	double			y1;
-	double			y2;
 	double			zoom;
 	double			max;
 	double			image_x;

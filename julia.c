@@ -33,23 +33,23 @@ void	choose_julia(t_env *e, t_frac *f)
 
 void	color_julia(t_env *e, t_frac *f)
 {
-	while (f->z_r * f->z_r + f->z_i * f->z_i < 4 && f->i < f->max)
+	while (f->z_r * f->z_r + f->z_i * f->z_i < 4.0 && f->i < f->max)
 	{
 		f->tmp = f->z_r;
 		f->z_r = f->z_r * f->z_r - f->z_i * f->z_i + f->c_r;
-		f->z_i = 2 * f->z_i * f->tmp + f->c_i;
-		f->i++;
+		f->z_i = 2.0 * f->z_i * f->tmp + f->c_i;
+		f->i += 1.0;
 	}
-	if (f->i == f->max)
-	{
-		e->color = 0x000000;
+//	if (f->i == f->max)
+//	{
+//		e->color = 0x000000;
+//		put_pixel_to_img(e, f->x, f->y);
+//	}
+//	else
+//	{
+		e->color = f->i * (10);
 		put_pixel_to_img(e, f->x, f->y);
-	}
-	else
-	{
-		e->color = f->i * (16776685);
-		put_pixel_to_img(e, f->x, f->y);
-	}
+//	}
 }
 
 void	draw_julia(t_env *e)
@@ -57,6 +57,8 @@ void	draw_julia(t_env *e)
 	t_frac	f;
 
 	init_julia(e, &f);
+	if (e->zoom ==1)
+		zoom(e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;
@@ -84,27 +86,22 @@ void	draw_julia(t_env *e)
 	}
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 }
-
+# define SIZE 400
 void	zoom(t_env *e, t_frac *f)
 {
-	if (e->mx < 400 + e->x1 && e->mx != 0)
+	if (e->button == 1)
 	{
-			f->x1 -= ((400 + e->x1) - e->mx);
-			e->x1 = ((400 + e->x1) - e->mx);
+		f->x1 -= (SIZE + e->x1 * 1.50 - e->mx);
+		e->x1 = (SIZE + e->x1  * 1.5- e->mx);
+		f->y1 -= (SIZE + e->y1  * 1.5- e->my);
+		e->y1 = (SIZE + e-> y1  * 1.5- e->my);
 	}
-	else if (e->mx > 400 + e->x1 && e->mx != 0)
+	else if (e->button == 2)
 	{
-			f->x1 -= ((400 + e->x1) - e->mx);
-			e->x1 = ((400 + e->x1) - e->mx);
+		f->x1 -= (SIZE + e->x1 / 1.50 - e->mx);
+		e->x1 = (SIZE + e->x1  / 1.5- e->mx);
+		f->y1 -= (SIZE + e->y1  / 1.5- e->my);
+		e->y1 = (SIZE + e-> y1  / 1.5- e->my);
 	}
-	if (e->my < 400 + e->y1 && e->my != 0)
-	{
-			f->y1 -= ((400 + e->y1) - e->my);
-			e->y1 = ((400 + e-> y1) - e->my);
-	}
-	else if (e->my > 400 + e->y1 && e->my != 0)
-	{
-			f->y1 -= ((400 + e->y1) - e->my);
-			e->y1 = ((400 + e->y1) - e->my);
-	}
+	e->zoom = 0;
 }

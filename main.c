@@ -34,7 +34,8 @@ int		main(int ac, char **av)
 	e.tmp_x = 0;
 	e.tmp_y = 0;
 	e.zoom = 0;
-	e.zm = 0;
+	e.zm = 1;
+	e.iter = 0.0;
 	e.julia = 0;
 	e.y1 = 0;
 	e.x1 = 0;

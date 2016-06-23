@@ -10,13 +10,16 @@ int		expose_hook(t_env *e)
 int		mouse_hook(int button, int x, int y, t_env *e)
 {
 	printf("button = %d (%d;%d)\n", button, x, y);
-	if (button == 1) //1 left clic, 5 wheel up
+	if (button == 1 || button == 2) //1 left clic, 5 wheel up
 	{
 		e->mx = x;
-		e->mx2 = x;
 		e->my = y;
-		e->my2 = y;
 		e->zoom = 1;
+		e->button = button;
+		if (button == 1)
+			e->zm *= 1.5;
+		else
+			e->zm /= 1.5;
 		draw(e);
 	}
 	return (0);
@@ -36,9 +39,9 @@ int		key_hook(int keycode, t_env *e)
 	else if (keycode == 126) //up
 		e->updown += 25;
 	else if (keycode == 69)
-		e->zm += 25;
+		e->zm *= 1.5;
 	else if (keycode == 78)
-		e->zm -= 25;
+		e->zm /= 1.5;
 	else if (keycode == 82)
 		e->julia = 0;
 	else if (keycode == 83)
@@ -63,7 +66,6 @@ int		key_hook(int keycode, t_env *e)
 
 int		mouse_motion_hook(int x, int y, t_env *e)
 {
-	printf("mouse : (%d;%d)\n", x, y);
 	if (x <= 800 && x >= 0)
 		e->ptr_x = x;
 	if (y <= 800 && y >= 0)
