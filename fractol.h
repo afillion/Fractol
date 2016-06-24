@@ -2,6 +2,7 @@
 # define FRACTOL_H
 # include <mlx.h>
 # include "libft/includes/get_next_line.h"
+# define SIZE 400
 
 typedef struct		s_env
 {
@@ -19,7 +20,7 @@ typedef struct		s_env
 	double			height;
 	int				ptr_x;
 	int				ptr_y;
-	int				julia;
+	int				frac;
 	double			tmp_cr;
 	double			tmp_ci;
 	int				zoom;
@@ -38,6 +39,8 @@ typedef struct		s_env
 	int				y1;
 	double			iter;
 	int				button;
+	int				k;
+	int				nb_zm;
 }					t_env;
 
 typedef	struct		s_fractals
@@ -75,7 +78,7 @@ void				init_julia(t_env *e, t_frac *f);
 void				draw_mandelbrot(t_env *e);
 
 void				choose_julia(t_env *e, t_frac *f);
-void				color_julia(t_env *e, t_frac *f);
+void				fill_img(t_env *e, t_frac *f);
 void				draw_julia(t_env *e);
 
 void				draw_ship(t_env *e);

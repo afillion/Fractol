@@ -5,7 +5,9 @@ void	draw_ship(t_env *e)
 {
 	t_frac	f;
 
-	init_mandelbrot(e, &f);
+	init_julia(e, &f);
+	if (e->zoom == 1)
+		zoom(e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;

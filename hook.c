@@ -14,12 +14,20 @@ int		mouse_hook(int button, int x, int y, t_env *e)
 	{
 		e->mx = x;
 		e->my = y;
-		e->zoom = 1;
-		e->button = button;
-		if (button == 1)
+		if (button == 1 && e->nb_zm < 40)
+		{
+			e->nb_zm++;
 			e->zm *= 1.5;
-		else
+			e->button = button;
+			e->zoom = 1;
+		}
+		else if (button == 2)
+		{
+			e->nb_zm--;
 			e->zm /= 1.5;
+			e->button = button;
+			e->zoom = 1;
+		}
 		draw(e);
 	}
 	return (0);
@@ -29,7 +37,11 @@ int		key_hook(int keycode, t_env *e)
 {
 	printf("key = %d\n", keycode);
 	if (keycode == 256)
-		e->julia = 100;
+		e->frac = 100;
+	else if (keycode == 81 && e->draw != 4)
+		e->draw += 1;
+	else if (keycode == 75 && e->draw != 1)
+		e->draw -= 1;
 	else if (keycode == 123) //left
 		e->leftright += 25;
 	else if (keycode == 124) //right
@@ -43,21 +55,25 @@ int		key_hook(int keycode, t_env *e)
 	else if (keycode == 78)
 		e->zm /= 1.5;
 	else if (keycode == 82)
-		e->julia = 0;
+		e->frac = 0;
 	else if (keycode == 83)
-		e->julia = 1;
+		e->frac = 1;
 	else if (keycode == 84)
-		e->julia = 2;
+		e->frac = 2;
 	else if (keycode == 18)
-		e->julia = 3;
+		e->frac = 3;
 	else if (keycode == 19)
-		e->julia = 4;
+		e->frac = 4;
 	else if (keycode == 20)
-		e->julia = 5;
+		e->frac = 5;
 	else if (keycode == 21)
-		e->julia = 6;
+		e->frac = 6;
 	else if (keycode == 23)
-		e->julia = 7;
+		e->frac = 7;
+	else if (keycode == 35)
+		e->k += 1000;
+	else if (keycode == 37)
+		e->k -= 1000;
 	else if (keycode == 53)
 		exit(0);
 	draw(e);
@@ -70,7 +86,7 @@ int		mouse_motion_hook(int x, int y, t_env *e)
 		e->ptr_x = x;
 	if (y <= 800 && y >= 0)
 		e->ptr_y = y;
-	if (e->julia == 1)
+	if (e->frac == 1)
 		draw(e);
 	return (0);
 }

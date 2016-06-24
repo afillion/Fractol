@@ -36,8 +36,10 @@ int		main(int ac, char **av)
 	e.zoom = 0;
 	e.zm = 1;
 	e.iter = 0.0;
-	e.julia = 0;
+	e.frac = 0;
 	e.y1 = 0;
+	e.k = 1;
+	e.nb_zm = 0;
 	e.x1 = 0;
 	e.mx = 0;
 	e.my = 0;

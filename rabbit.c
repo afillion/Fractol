@@ -4,18 +4,18 @@ void	draw_rabbit(t_env *e)
 {
 	t_frac	f;
 
-	init_mandelbrot(e, &f);
+	init_julia(e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;
 		while (f.y < f.image_y)
 		{
-			if (e->julia == 0)
+			if (e->frac == 0)
 			{
 				f.c_r = -0.123;
 				f.c_i = 0.745;
 			}
-			if (e->julia == 1)
+			if (e->frac == 1)
 			{
 				f.c_r = get_complex(e->ptr_x);
 				f.c_i = get_complex(e->ptr_y);

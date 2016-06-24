@@ -4,7 +4,9 @@ void	draw_mandelbrot(t_env *e)
 {
 	t_frac	f;
 
-	init_mandelbrot(e, &f);
+	init_julia(e, &f);
+	if (e->zoom == 1)
+		zoom(e, &f);
 	while (f.x < f.image_x)
 	{
 		f.y = 0;
@@ -14,24 +16,12 @@ void	draw_mandelbrot(t_env *e)
 			f.c_i = (f.y + f.y1) / f.zoom ;
 			f.z_r = 0;
 			f.z_i = 0;
-			f.i = 0;
-			while (f.z_r * f.z_r + f.z_i * f.z_i < 4 && f.i < f.max)
+			if (e->frac == 1)
 			{
-				f.tmp = f.z_r;
-				f.z_r = f.z_r * f.z_r - f.z_i * f.z_i + f.c_r;
-				f.z_i = 2 * f.z_i * f.tmp + f.c_i;
-				f.i++;
+				f.z_r = get_complex(e->ptr_x);
+				f.z_i = get_complex(e->ptr_y);
 			}
-			if (f.i == f.max)
-			{
-				e->color = 0x000000;
-				put_pixel_to_img(e, f.x, f.y);
-			}
-			else
-			{
-				e->color = (f.i * 16776685);
-				put_pixel_to_img(e, f.x, f.y);
-			}
+			fill_img(e, &f);
 			f.y++;
 		}
 		f.x++;
