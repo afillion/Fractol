@@ -6,12 +6,11 @@
 /*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 16:19:00 by afillion          #+#    #+#             */
-/*   Updated: 2016/06/25 16:19:01 by afillion         ###   ########.fr       */
+/*   Updated: 2016/06/25 16:22:32 by afillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <stdio.h>
 
 int		expose_hook(t_env *e)
 {
@@ -48,7 +47,6 @@ int		mouse_hook(int button, int x, int y, t_env *e)
 
 int		key_hook(int keycode, t_env *e)
 {
-	printf("key = %d\n", keycode);
 	if (keycode == 256)
 		e->frac = 100;
 	else if (keycode == 81 || keycode == 75)
@@ -77,7 +75,6 @@ int		key_hook(int keycode, t_env *e)
 
 int		mouse_motion_hook(int x, int y, t_env *e)
 {
-	printf("[%d ; %d]\n", x, y);
 	if (x <= 800 && x >= 0)
 		e->ptr_x = x;
 	if (y <= 800 && y >= 0)

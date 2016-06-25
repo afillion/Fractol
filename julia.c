@@ -6,13 +6,11 @@
 /*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 16:18:51 by afillion          #+#    #+#             */
-/*   Updated: 2016/06/25 16:18:52 by afillion         ###   ########.fr       */
+/*   Updated: 2016/06/25 16:22:45 by afillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <math.h>
-#include <stdio.h>
 
 void	draw_julia(t_env *e, t_frac *f)
 {
