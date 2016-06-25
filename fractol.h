@@ -6,7 +6,7 @@
 /*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 16:18:40 by afillion          #+#    #+#             */
-/*   Updated: 2016/06/25 16:18:41 by afillion         ###   ########.fr       */
+/*   Updated: 2016/06/25 17:02:03 by afillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ typedef struct		s_env
 	int				leftright;
 	int				mx;
 	int				my;
-	double			tmp_x1;
-	double			tmp_y1;
-	int				mx2;
-	int				my2;
-	int				tmp_x;
-	int				tmp_y;
 	int				x1;
 	int				y1;
 	double			iter;

@@ -6,7 +6,7 @@
 /*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/25 16:20:26 by afillion          #+#    #+#             */
-/*   Updated: 2016/06/25 16:20:30 by afillion         ###   ########.fr       */
+/*   Updated: 2016/06/25 17:02:27 by afillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	init_env(t_env *e)
 	e->height = 800;
 	e->leftright = 0;
 	e->updown = 0;
-	e->tmp_x = 0;
-	e->tmp_y = 0;
 	e->zoom = 0;
 	e->zm = 1;
 	e->iter = 0.0;
