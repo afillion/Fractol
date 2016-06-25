@@ -1,11 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/25 16:19:10 by afillion          #+#    #+#             */
+/*   Updated: 2016/06/25 16:19:11 by afillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-void	draw_mandelbrot(t_env *e, t_frac *f)
+void	algo_mandelbrot(t_env *e, t_frac *f)
 {
-	if (e->zoom == 1)
-		zoom(e, f);
-	if (e->move == 1)
-		move(e, f);
 	while (f->x < f->image_x)
 	{
 		f->y = 0;
@@ -27,6 +35,15 @@ void	draw_mandelbrot(t_env *e, t_frac *f)
 		}
 		f->x++;
 	}
+}
+
+void	draw_mandelbrot(t_env *e, t_frac *f)
+{
+	if (e->zoom == 1)
+		zoom(e, f);
+	if (e->move == 1)
+		move(e, f);
+	algo_mandelbrot(e, f);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	if (e->hide == 0)
 		put_overlay(e);

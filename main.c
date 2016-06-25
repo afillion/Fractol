@@ -1,4 +1,15 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/25 16:20:26 by afillion          #+#    #+#             */
+/*   Updated: 2016/06/25 16:20:30 by afillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	init_env(t_env *e)
@@ -27,10 +38,44 @@ void	init_env(t_env *e)
 	e->win = mlx_new_window(e->mlx, e->width, e->height, e->filename);
 }
 
+void	show_names(void)
+{
+	ft_putendl_fd("You can choose between :\n", 2);
+	ft_putendl_fd("\t- Mandelbrot\n", 2);
+	ft_putendl_fd("\t- Julia\n", 2);
+	ft_putendl_fd("\t- Ship\n", 2);
+	ft_putendl_fd("\t- Rabbit\n", 2);
+	ft_putendl_fd("\t- Dragon\n", 2);
+	ft_putendl_fd("\t- Galaxy\n", 2);
+	ft_putendl_fd("\t- Thunder\n", 2);
+}
+
 void	ft_exit(char *s)
 {
 	ft_putendl_fd(s, 2);
+	show_names();
 	exit(0);
+}
+
+void	open_frac(t_env *e, char **av)
+{
+	e->filename = av[1];
+	if (ft_strcmp(av[1], "Mandelbrot") == 0)
+		e->draw = 1;
+	else if (ft_strcmp(av[1], "Julia") == 0)
+		e->draw = 3;
+	else if (ft_strcmp(av[1], "Ship") == 0)
+		e->draw = 2;
+	else if (ft_strcmp(av[1], "Rabbit") == 0)
+		e->draw = 4;
+	else if (ft_strcmp(av[1], "Dragon") == 0)
+		e->draw = 5;
+	else if (ft_strcmp(av[1], "Thunder") == 0)
+		e->draw = 6;
+	else if (ft_strcmp(av[1], "Galaxy") == 0)
+		e->draw = 9;
+	else
+		ft_exit("Wrong fractal's name !");
 }
 
 int		main(int ac, char **av)
@@ -39,20 +84,10 @@ int		main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		e.filename = av[1];
-		if (ft_strcmp(av[1], "Mandelbrot") == 0)
-			e.draw = 1;
-		else if (ft_strcmp(av[1], "Julia") == 0)
-			e.draw = 3;
-		else if (ft_strcmp(av[1], "Ship") == 0)
-			e.draw = 2;
-		else if (ft_strcmp(av[1], "Rabbit") == 0)
-			e.draw = 4;
-		else
-			ft_exit("Wrong fractal's name ! Try Mandelbrot, Julia, Ship or Rabbit");
+		open_frac(&e, av);
 	}
 	else
-		ft_exit("Usage: './fractol <name>' You can choose between Mandelbrot, Julia, Ship or Rabbit");
+		ft_exit("Usage: './fractol <name>'");
 	init_env(&e);
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_hook(e.win, 6, 1L << 6, mouse_motion_hook, &e);

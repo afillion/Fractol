@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/25 16:18:40 by afillion          #+#    #+#             */
+/*   Updated: 2016/06/25 16:18:41 by afillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 # include <mlx.h>
@@ -65,6 +77,7 @@ typedef	struct		s_fractals
 }					t_frac;
 
 void				put_overlay(t_env *e);
+void				algo_mandelbrot(t_env *e, t_frac *f);
 
 void				what_draw(t_env *e, int keycode);
 void				what_move(t_env *e, int keycode);

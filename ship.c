@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ship.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afillion <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/25 16:20:11 by afillion          #+#    #+#             */
+/*   Updated: 2016/06/25 16:20:13 by afillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
-#include <stdio.h>
 #include <math.h>
 
 void	fill_ship(t_env *e, t_frac *f)
@@ -44,7 +55,6 @@ void	draw_ship(t_env *e, t_frac *f)
 		}
 		f->x++;
 	}
-	printf("color = %d\n", e->k);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	if (e->hide == 0)
 		put_overlay(e);
