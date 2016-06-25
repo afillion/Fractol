@@ -15,9 +15,12 @@ SRC = main.c \
 	  julia.c \
 	  draw.c \
 	  ship.c \
-	  rabbit.c \
 	  hook.c \
 	  init.c \
+	  moves.c \
+	  what.c \
+	  color.c \
+	  overlay.c \
 
 OBJ = $(SRC:.c=.o)
 

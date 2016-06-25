@@ -1,4 +1,5 @@
 #include "fractol.h"
+#include <stdio.h>
 
 void	put_pixel_to_img(t_env *e, int x, int y)
 {
@@ -12,19 +13,25 @@ void	put_pixel_to_img(t_env *e, int x, int y)
 
 void	draw(t_env *e)
 {
+	t_frac	f;
+
+	init(e, &f);
 	if (e->draw == 1)
-		draw_mandelbrot(e);
+		draw_mandelbrot(e, &f);
 	else if (e->draw == 2)
-		draw_julia(e);
-	else if (e->draw == 3)
-		draw_ship(e);
-	else if (e->draw == 4)
-		draw_julia(e);
+		draw_ship(e, &f);
+	else if (e->draw >= 3 && e->draw <= 9)
+		draw_julia(e, &f);
 }
 
 void	fill_img(t_env *e, t_frac *f)
 {
 	f->i = 0;
+	if (e->draw != 1)
+	{
+		f->z_r = (f->x + f->x1) / f->zoom;
+		f->z_i = (f->y + f->y1) / f->zoom;
+	}
 	while (f->z_r * f->z_r + f->z_i * f->z_i < 4.0 && f->i < f->max)
 	{
 		f->tmp = f->z_r;
@@ -46,19 +53,19 @@ void	fill_img(t_env *e, t_frac *f)
 
 void	zoom(t_env *e, t_frac *f)
 {
-	if (e->button == 1)
+	if (e->button == 5)
 	{
 		f->x1 -= (SIZE + e->x1 * 1.5 - e->mx);
-		e->x1 = (SIZE + e->x1  * 1.5- e->mx);
-		f->y1 -= (SIZE + e->y1  * 1.5- e->my);
-		e->y1 = (SIZE + e-> y1  * 1.5- e->my);
+		e->x1 = (SIZE + e->x1 * 1.5 - e->mx);
+		f->y1 -= (SIZE + e->y1 * 1.5 - e->my);
+		e->y1 = (SIZE + e->y1 * 1.5 - e->my);
 	}
-	else if (e->button == 2)
+	else if (e->button == 4)
 	{
 		f->x1 -= (SIZE + e->x1 / 1.5 - e->mx);
-		e->x1 = (SIZE + e->x1  / 1.5- e->mx);
-		f->y1 -= (SIZE + e->y1  / 1.5- e->my);
-		e->y1 = (SIZE + e-> y1  / 1.5- e->my);
+		e->x1 = (SIZE + e->x1 / 1.5 - e->mx);
+		f->y1 -= (SIZE + e->y1 / 1.5 - e->my);
+		e->y1 = (SIZE + e->y1 / 1.5 - e->my);
 	}
 	e->zoom = 0;
 	e->iter += 50;

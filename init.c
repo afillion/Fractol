@@ -1,19 +1,8 @@
 #include "fractol.h"
 
-void	init_julia(t_env *e, t_frac *f)
+void	init(t_env *e, t_frac *f)
 {
-	if (e->frac == 100)
-	{
-		e->updown = 0;
-		e->leftright = 0;
-		e->zm = 1;
-		e->frac = 0;
-		e->zoom = 0;
-		e->x1 = 0;
-		e->y1 = 0;
-		e->iter = 0;
-		e->nb_zm = 0;
-	}
+	ask_reset(e);
 	f->x = 0;
 	f->x1 = -400.0 + e->leftright;
 	f->y1 = -400.0 + e->updown;
@@ -26,18 +15,13 @@ void	init_julia(t_env *e, t_frac *f)
 		f->c_r = -0.123;
 		f->c_i = 0.745;
 	}
-	if (e->draw == 2)
+	else if (e->draw == 3)
 	{
 		f->c_r = 0.285;
 		f->c_i = 0.01;
 	}
-	if (e->frac == 0 && e->draw == 2)
-	{
-		f->c_r = 0.285;
-		f->c_i = 0.01;
-	}
-	if (e->frac != 100 && e->frac != 2 && e->frac != 0)
-		choose_julia(e, f);
+	else if (e->draw >= 5 && e->draw <= 10)
+		define_frac(e, f);
 }
 
 //void	init_mandelbrot(t_env *e, t_frac *f)
